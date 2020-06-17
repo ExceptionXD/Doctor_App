@@ -23,7 +23,7 @@ router.get("/register", (req, res) => {
 var options = {
   auth: {
     api_key:
-      "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",
+      "############################################3",
   },
 };
 
@@ -83,7 +83,7 @@ router.post("/register", (req, res) => {
 
             let emailSend = {
               to: email,
-              from: "officialmariyammushtaque@gmail.com",
+              from: "dummy@gmail.com",
               subject: `Hi ${name} Here is Your Activation Code `,
               text: `Your Activation Code is ${Mycode}`,
               html: `<!DOCTYPE html>
@@ -324,7 +324,7 @@ router.post("/bookings", (req, res) => {
   const { name, email, age, deptOption, time, notes } = req.body;
   let emailSend = {
     to: email,
-    from: "officialmariyammushtaque@gmail.com",
+    from: "dummy@gmail.com",
     subject: `Hi ${name} Your Appointment Details `,
     text: `Your Appointment Code is ${code}`,
     html: `<div class = container card card-body><h1>Your Appointment is Booked with Us at ${time} and your secret Code is ${code}</b></h1> </div>`,
