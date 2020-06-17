@@ -1,0 +1,19 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card card-body">
+        <h2 class="text-center">Login</h2><br>
+        <%- include ('./partials/messages'); %>
+        <form method="POST" action="/user/login">
+          <input type="email" name="email" id="email" placeholder="Enter your Email" class="form-control"><br>
+          <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control"><br> 
+          <button type="submit" class="btn btn-success form-control" >Login</button><br>
+          <p>Don't have an Account ? </p><a href="/user/register">Sign Up Now</a>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

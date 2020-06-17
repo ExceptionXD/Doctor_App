@@ -1,0 +1,21 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <div class="card card-body">
+        <h2 class="text-center">Register</h2><br>
+        <%- include ('./partials/messages'); %>
+        <form method="POST" action="/user/register">
+          <input type="text" name="name" id="name" placeholder="Enter your name" class="form-control"><br>
+          <input type="email" name="email" id="email" placeholder="Enter your Email" class="form-control"><br>
+          <input type="password" name="password" id="password" placeholder="Enter your Password" class="form-control"><br> 
+          <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Your Password" class="form-control"><br>
+          <button type="submit" class="btn btn-success form-control" >Register</button><br>
+          <p>Already Signed Up ?</p><a href="/user/login">Sign In</a>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
+  </div>
+</div>

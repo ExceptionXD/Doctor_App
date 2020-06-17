@@ -1,0 +1,24 @@
+<br>
+<div class="container card card-body mb-3">
+  <h2 class="text-center">Booking Details</h2><br>
+  <%- include ('./partials/messages'); %>
+  <form method="POST" action="/user/bookings">
+    <input type="text" name="name" placeholder="Enter the name of Patient" class="form-control"><br>
+    <input type="text" name="email" placeholder="Enter the Email of Patient" class="form-control"><br>
+    <input type="number" name="age" placeholder="Enter the Age of Patient" class="form-control"><br>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Select the Department</label>
+      <select class="form-control" id="exampleFormControlSelect1" name="deptOption">
+        <option value="cardio">Cardiology</option>
+        <option value="dentist">Dentist</option>
+        <option value="dermat">Dermatologist</option>
+        <option value="pedia">Pediatrician</option>
+        <option value="neuro">Neuro-Surgeon</option>
+      </select>
+    </div>
+    <br>
+    <input type="datetime-local" id="time" name="time" class="form-control"><br>
+    <textarea class="form-control" rows="2" cols="4" placeholder="Any Notes" name ="notes"></textarea><br>
+    <center><button type="submit" class="btn btn-primary btn-info">Schedule</button></center>
+  </form>
+</div>
