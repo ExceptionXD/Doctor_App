@@ -273,7 +273,7 @@ router.post("/activate", (req, res) => {
   const { code } = req.body;
 
   if (
-    User.findOne({ accountActive: false }, { activationCode: code }).then(
+    User.findOne({ accountActive: false , activationCode: code }).then(
       (user) => {
         if (user) {
           var myquery = { accountActive: false };
@@ -336,11 +336,73 @@ router.post("/bookings", (req, res) => {
     }
     console.log("Email Sent Successfully");
   });
-  req.flash(
-    "success_msg",
-    "Appointment Successfully Booked ,Please Check Your Mail "
+
+
+  //Enter the code in the db
+  if (
+    User.findOne({ email : email ,name : name ,  }).then(
+      (user) => {
+        if (user) {
+          var myquery = { appointmentCode : 0 };
+          var newvalues = { $set: { appointmentCode : code } };
+
+          User.updateOne(myquery, newvalues).then((user) => {
+            if (user) {
+              req.flash(
+                "success_msg",
+                "Appointment Successfully Booked ,Please Check Your Mail "
+              );
+              res.redirect(`/dashboard`);
+            } else {
+              req.flash("error_msg", "Some Error");
+              res.redirect('/dashboard');
+            }
+          });
+        } else {
+          req.flash("error_msg", "Sorry Database error !");
+          res.redirect("/dashboard");
+        }
+      }
+    )
   );
-  res.redirect(`/dashboard`);
 });
+
+
+ //appointment GET Req
+ router.get('/appointmentCode',(req,res)=>{
+  res.render('appointmentCode');
+})
+
+//Post Appointment Code
+ //appointment GET Req
+ router.post('/appointmentCode',(req,res)=>{
+  const {code} = req.body;
+  
+  if (
+    User.findOne({ appointmentCode : code }).then(
+      (user) => {
+        if (user) {
+          var myquery = {  appointmentCode : code };
+          var newvalues = { $set: { appointmentCode : 0 } };
+
+          User.updateOne(myquery, newvalues).then((user) => {
+            if (user) {
+              res.redirect("../public/static/chat.html");
+            } else {
+              req.flash("error_msg", "Some Error");
+              res.redirect("/user/dashboard");
+            }
+          });
+        } else {
+          req.flash("error_msg", " Code does not match !");
+          res.redirect("/user/appointmentCode");
+        }
+      }
+    )
+  );
+
+})
+
+
 
 module.exports = router;

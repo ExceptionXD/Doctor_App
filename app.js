@@ -61,6 +61,11 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use('/',require('./routes/index'));
 app.use('/user',require('./routes/user'));
 
+//Default Route
+app.get('/login',(req,res)=>{
+  res.render('landing');
+})
+
 
 const server = app.listen(3000,console.log('Server stared.....'));
 

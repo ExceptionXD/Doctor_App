@@ -28,6 +28,11 @@ const userSchema = new Schema({
   accountActive :{
     type : Boolean ,
     default :false,
+  },
+
+  appointmentCode :{
+    type: Number,
+    default : 0 ,
   }
   
 });
